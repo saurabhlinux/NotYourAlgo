@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Trading Journal</title>
+    <style>
+        /* Basic styling to remove margins and make the iframe large */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        
+        .iframe-container {
+            width: 90%;
+            height: 90vh; /* Takes up 90% of the viewport height */
+            margin: 2rem auto; /* Centers the container */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Forces the iframe to fill its container */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iframe-container">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCpsPAIkt2_XTvl5L-u_sjdx3ES09R5X0fZekuS0wT9UqXOn-yUIv-EkeUhy73w2tsw8Nx5Yz_mlUu/pubhtml?widget=true&amp;headers=false"></iframe>
+    </div>
+
+</body>
+</html>
