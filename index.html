@@ -31,15 +31,16 @@
             <a href="#tech" class="hover:text-sky-400 transition">Tech Stack</a>
             <a href="https://substack.com/@notyouralgo/posts" target="_blank" class="hover:text-sky-400 transition">Free Strategies</a>
         </div>
-        <button onclick="openModal()" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-md font-semibold transition w-full md:w-auto text-center">Hire Me</button>
+        <button onclick="openHireModal()" class="bg-sky-500 hover:bg-sky-600 text-white px-5 py-2 rounded-md font-semibold transition w-full md:w-auto text-center">Hire Me</button>
     </nav>
 
     <header class="container mx-auto px-6 py-24 text-center">
         <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Automate Your <span class="gradient-text">Trading Edge</span></h1>
         <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Stop missing setups. I build custom, high-speed algorithmic trading bots and backtesting scripts for both Indian (NSE/BSE) and Global markets.</p>
-        <div class="flex justify-center space-x-4">
+        <!-- <div class="flex justify-center space-x-4">
             <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition">Book a Free Consultation</a>
-        </div>
+        </div> -->
+        <button onclick="openHireModal()" class="bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-lg font-bold text-lg transition">Book a Free Consultation</button>
     </header>
 
     <section id="services" class="bg-gray-900 py-20 border-t border-b border-gray-800">
@@ -160,6 +161,7 @@
             <p class="text-gray-400 text-sm mb-6">Drop your details below and I'll shoot you the link to the free indicators, backtest scripts, and cBots.</p>
             
             <form id="popupForm" class="space-y-4">
+                <input type="hidden" name="formType" value="FREE_RESOURCE">
                 <div>
                     <input type="text" id="name" name="name" placeholder="First Name" required class="w-full bg-gray-800 text-gray-200 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-sky-500 transition placeholder-gray-500">
                 </div>
@@ -171,13 +173,41 @@
             
             <div id="modalSuccess" class="hidden mt-4 p-3 bg-green-900/30 border border-green-500/50 rounded-lg text-center">
                 <p class="text-green-400 font-semibold text-xs leading-relaxed">
-                    Sent! Check your inbox (and <span class="underline">spam folder</span>). <br> 
+                    Sent! Check your inbox (and <span class="underline text-red-400 font-bold italic">spam folder</span>). <br> 
                     Please **reply** to the email so I know the link reached you!
                 </p>
             </div>
         </div>
     </div>
-
+<div id="hireModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-sm w-full relative shadow-2xl">
+        <button onclick="closeHireModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <h3 class="text-xl font-bold mb-1 text-white text-center">Project Inquiry</h3>
+        <p class="text-gray-400 text-xs mb-5 text-center">Fast-track your automation. I'll reply within 24hrs.</p>
+        
+        <form id="hireForm" class="space-y-3">
+            <input type="hidden" name="formType" value="HIRE_INQUIRY">
+            <select name="market" required class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm cursor-pointer">
+                <option value="" disabled selected>Select Market</option>
+                <option value="NSE/BSE">🇮🇳 Indian Markets</option>
+                <option value="Forex/US">💱 Forex & US</option>
+                <option value="Crypto">₿ Crypto</option>
+                <option value="Other">🛠️ Other / Backtesting</option>
+            </select>
+            <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm">
+            <input type="text" name="contact" placeholder="Telegram / WhatsApp / Email" required class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm">
+            <textarea name="notes" placeholder="Anything else you want to ask or tell?" rows="2" class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm resize-none"></textarea>
+            <button type="submit" id="hireSubmitBtn" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2.5 rounded-lg transition text-sm">Send Request</button>
+        </form>
+        
+        <div id="hireSuccess" class="hidden mt-4 p-3 bg-green-900/30 border border-green-500/50 rounded-lg text-center">
+            <p class="text-green-400 font-semibold text-xs">Request Sent! I'll contact you shortly.</p>
+        </div>
+    </div>
+</div>
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbw01bFKs9Jk3KxCDjrKfDriKeiNh_kblmqgduPkCEf0gISiJGC69Z_gSPGFj0bXSzpsWA/exec';
         
@@ -236,6 +266,42 @@
                     alert("Something went wrong. Please try again.");
                 });
         });
+    </script>
+    <script>
+        const hireModal = document.getElementById('hireModal');
+const hireForm = document.getElementById('hireForm');
+const hireSubmitBtn = document.getElementById('hireSubmitBtn');
+const hireSuccess = document.getElementById('hireSuccess');
+
+function openHireModal() { hireModal.classList.remove('hidden'); }
+function closeHireModal() { 
+    hireModal.classList.add('hidden');
+    hireForm.reset();
+    hireSuccess.classList.add('hidden');
+    hireForm.classList.remove('hidden');
+}
+
+// Close hire modal on outside click
+hireModal.addEventListener('click', (e) => { if (e.target === hireModal) closeHireModal(); });
+
+// Handle Hire Form Submission
+hireForm.addEventListener('submit', e => {
+    e.preventDefault();
+    hireSubmitBtn.disabled = true;
+    hireSubmitBtn.innerText = "Sending...";
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(hireForm)})
+        .then(response => {
+            hireSuccess.classList.remove('hidden');
+            hireForm.classList.add('hidden');
+            setTimeout(() => { closeHireModal(); hireSubmitBtn.disabled = false; hireSubmitBtn.innerText = "Send Request"; }, 5000);
+        })
+        .catch(error => {
+            alert("Error sending request. Please try again.");
+            hireSubmitBtn.disabled = false;
+            hireSubmitBtn.innerText = "Send Request";
+        });
+});
     </script>
 </body>
 </html>
