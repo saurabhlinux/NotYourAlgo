@@ -192,9 +192,9 @@
             <input type="hidden" name="formType" value="HIRE_INQUIRY">
             <select name="market" required class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm cursor-pointer">
                 <option value="" disabled selected>Select Market</option>
-                <option value="NSE/BSE">🇮🇳 Indian Markets</option>
                 <option value="Forex/US">💱 Forex & US</option>
                 <option value="Crypto">₿ Crypto</option>
+                <option value="NSE/BSE">🇮🇳 Indian Markets</option>
                 <option value="Other">🛠️ Other / Backtesting</option>
             </select>
             <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800 text-gray-200 border border-gray-700 rounded-lg px-3 py-2 focus:border-sky-500 outline-none text-sm">
@@ -339,7 +339,7 @@ methodRadios.forEach(radio => {
             contactInput.placeholder = "@username";
             contactInput.type = "text";
         } else if (method === 'WhatsApp') {
-            contactInput.placeholder = "+91 ... (with country code)";
+            contactInput.placeholder = "+1 ... (with country code)";
             contactInput.type = "tel";
         } else if (method === 'Email') {
             contactInput.placeholder = "example@gmail.com";
