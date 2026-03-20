@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Hub | NOT YOUR ALGO</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050505' rx='20'/><path d='M30 20 L15 20 L15 80 L30 80' fill='none' stroke='%230ea5e9' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/><path d='M20 70 L40 45 L55 55 L80 25' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/><circle cx='80' cy='25' r='8' fill='%230ea5e9'/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .gradient-text { background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center border-b border-gray-800 space-y-4 md:space-y-0">
+        <div class="w-48">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="100%" height="100%">
+                  <rect width="400" height="100" fill="transparent" />
+                  <path d="M40 25 L20 25 L20 75 L40 75" fill="none" stroke="#0ea5e9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M25 65 L45 45 L55 55 L75 30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="75" cy="30" r="5" fill="#0ea5e9"/>
+                  <text x="100" y="60" font-family="'Courier New', monospace, sans-serif" font-weight="bold" font-size="32" fill="#ffffff" letter-spacing="1">
+                    NOT<tspan fill="#0ea5e9">YOUR</tspan>ALGO
+                  </text>
+                </svg>
+            </a>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+            <a href="index.html" class="hover:text-sky-400 transition font-semibold text-gray-300">← Back to Home</a>
+        </div>
+        <a href="index.html#contact" class="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-5 py-2 rounded-md font-semibold transition w-full md:w-auto text-center">Hire Me for Custom Work</a>
+    </nav>
+
+    <header class="container mx-auto px-6 py-20 text-center border-b border-gray-800">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Trading <span class="gradient-text">Resource Vault</span></h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">Welcome to the inside. Bookmark this page—I regularly update these Python scripts, cBots, and indicators. Download what you need to build your edge.</p>
+    </header>
+
+    <section class="container mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-sky-400 transition flex flex-col h-full">
+                <div class="mb-4">
+                    <span class="bg-sky-500/10 text-sky-400 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full border border-sky-500/20">cTrader / C#</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Advanced Trailing Stop cBot</h3>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">A plug-and-play cBot that manages your open positions using ATR-based trailing stops. Keeps you in the trend longer.</p>
+                <a href="#" target="_blank" class="block w-full text-center bg-gray-700 hover:bg-sky-500 text-white font-semibold py-2 rounded transition">Download .algo</a>
+            </div>
+
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-sky-400 transition flex flex-col h-full">
+                <div class="mb-4">
+                    <span class="bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full border border-purple-500/20">Python</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">NSE F&O Data Fetcher</h3>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">A lightweight Python script to pull historical options data from Indian markets for local backtesting.</p>
+                <a href="#" target="_blank" class="block w-full text-center bg-gray-700 hover:bg-sky-500 text-white font-semibold py-2 rounded transition">View on GitHub</a>
+            </div>
+
+            <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-sky-400 transition flex flex-col h-full">
+                <div class="mb-4">
+                    <span class="bg-green-500/10 text-green-400 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full border border-green-500/20">TradingView</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Multi-Timeframe RSI Divergence</h3>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">Custom PineScript indicator that automatically highlights hidden and regular divergences across 3 timeframes.</p>
+                <a href="#" target="_blank" class="block w-full text-center bg-gray-700 hover:bg-sky-500 text-white font-semibold py-2 rounded transition">Get Source Code</a>
+            </div>
+
+            </div>
+    </section>
+
+    <section class="bg-gray-900 py-16 border-t border-gray-800 text-center">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-2xl font-bold mb-4">Need help setting these up?</h2>
+            <p class="text-gray-400 mb-6 text-sm">Jump into the community. If you hit a bug or want to modify these scripts for your specific strategy, ask away.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://discord.gg/k2KkeRNugR" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152... (abbreviated, handled by standard tailwind icon spacing)"></path></svg>
+                    Join Discord
+                </a>
+                <span class="text-gray-600">|</span>
+                <a href="https://t.me/saurabhsinghtarkar" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold">Message on Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-6 text-gray-600 text-sm border-t border-gray-800">
+        <p>&copy; 2026 Not Your Algo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
