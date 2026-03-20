@@ -149,6 +149,90 @@
         <p>&copy; 2026 Not Your Algo. All rights reserved.</p>
         <p class="text-xs text-gray-800 mt-2">Free DNS by <a href="https://freedomain.one" target="_blank" class="hover:text-gray-600">FreeDomain.One</a></p>
     </footer>
+<div id="popupModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity">
+        <div class="bg-gray-900 border border-gray-700 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <h3 class="text-2xl font-bold mb-2 text-white">Grab the Free Resources</h3>
+            <p class="text-gray-400 text-sm mb-6">Drop your details below and I'll shoot you the link to the free indicators, backtest scripts, and cBots.</p>
+            
+            <form id="popupForm" class="space-y-4">
+                <div>
+                    <input type="text" id="name" name="name" placeholder="First Name" required class="w-full bg-gray-800 text-gray-200 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-sky-500 transition placeholder-gray-500">
+                </div>
+                <div>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full bg-gray-800 text-gray-200 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:border-sky-500 transition placeholder-gray-500">
+                </div>
+                <button type="submit" id="submitBtn" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 rounded-lg transition shadow-md">Send It To Me</button>
+            </form>
+            
+            <div id="modalSuccess" class="hidden mt-4 p-3 bg-green-900/30 border border-green-500/50 rounded-lg text-center">
+                <p class="text-green-400 font-semibold text-sm">Success! Check your inbox for the link.</p>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxTKFVpmPDGE9ZsUGf99bYjsir24ge-m7HjfWTCjzpZZyYW8y9yW3J4RevwDyk5U51ZfA/exec';
+        
+        const modal = document.getElementById('popupModal');
+        const form = document.getElementById('popupForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('modalSuccess');
+
+        function openModal() { modal.classList.remove('hidden'); }
+        function closeModal() { 
+            modal.classList.add('hidden');
+            form.reset();
+            successMsg.classList.add('hidden');
+        }
+
+        // Auto-open modal 5 seconds after page loads (only once per session)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (!sessionStorage.getItem('popupShown')) {
+                    openModal();
+                    sessionStorage.setItem('popupShown', 'true');
+                }
+            }, 5000); 
+        });
+
+        // Close when clicking outside the box
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Handle Form Submission
+        form.addEventListener('submit', e => {
+            e.preventDefault(); 
+            submitBtn.disabled = true; 
+            submitBtn.innerText = "Sending...";
+            submitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    successMsg.classList.remove('hidden'); 
+                    form.reset(); 
+                    submitBtn.innerText = "Sent!";
+                    
+                    setTimeout(() => {
+                        closeModal();
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Send It To Me";
+                        submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Send It To Me";
+                    submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+                    alert("Something went wrong. Please try again.");
+                });
+        });
+    </script>
 </body>
 </html>
